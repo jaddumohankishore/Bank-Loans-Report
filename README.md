@@ -1,40 +1,110 @@
-# Bank Loans Report Analysis using Power BI
+# 💰 Bank Loans Report Analysis using Power BI
 
-Welcome to the Bank Loan Analysis Power BI project repository! This project aims to provide insightful analysis and visualization of bank loan data using Power BI.
+Welcome to the **Bank Loan Analysis Power BI** project repository!  
+This project provides **insightful analysis and visualization** of bank loan data using **Power BI**, enabling financial institutions to make **data-driven decisions** and monitor loan portfolio performance effectively.
 
-## Overview
+---
 
-This Power BI project analyzes various aspects of bank loans to provide valuable insights for decision-making. It comprises three main dashboards: Summary, Overview, and Details.
+## 🧾 Overview
 
-### Dashboard 1: Summary
+This Power BI project analyzes various aspects of **bank loans** to provide valuable insights for **decision-making and performance tracking**.  
+It comprises **two main dashboards**:
 
-#### Key Performance Indicators (KPIs) Requirements:
+- 📊 **Summary**
+- 📈 **Overview**
 
-1. **Total Loan Applications:** Calculate the total number of loan applications received during a specified period, including Month-to-Date (MTD) and Month-over-Month (MoM) changes.
-2. **Total Funded Amount:** Understand the total amount of funds disbursed as loans, monitor MTD Total Funded Amount, and analyze MoM changes.
-3. **Total Amount Received:** Track the total amount received from borrowers to assess cash flow and loan repayment, including MTD Total Amount Received and MoM changes.
-4. **Average Interest Rate:** Calculate the average interest rate across all loans, MTD, and monitor MoM variations.
-5. **Average Debt-to-Income Ratio (DTI):** Evaluate the average DTI for borrowers, compute the average DTI for all loans, MTD, and track MoM fluctuations.
+---
 
-#### Summary Visualization:
+## 🧩 Project Components
 
-**Loan Status Grid View:** Gain a comprehensive overview of lending operations and monitor loan performance categorized by 'Loan Status'. This grid view provides insights into metrics such as Total Loan Applications, Total Funded Amount, Total Amount Received, MTD Funded Amount, MTD Amount Received, Average Interest Rate, and Average DTI.
+| Component | Description |
+|------------|-------------|
+| **Problem Statement** | Defines the objectives, scope, and expected outcomes of the Bank Loan Analysis. It highlights the need to analyze lending performance, customer repayment behavior, and key financial KPIs. |
+| **Query Document (SQL)** | Contains SQL queries used for data cleaning, aggregation, and generating metrics such as total loan amount, repayment trends, and average interest rates. |
+| **Financial_Loan Dataset** | The dataset containing loan-related data such as borrower details, loan amount, interest rate, status, DTI ratio, and more. Used as the foundation for SQL querying and Power BI visualization. |
 
-### Dashboard 2: Overview
+---
 
-1. **Monthly Trends by Issue Date (Line Chart):** Identify seasonality and long-term trends in lending activities.
-2. **Regional Analysis by State (Filled Map):** Identify regions with significant lending activity and assess regional disparities.
-3. **Loan Term Analysis (Donut Chart):** Understand the distribution of loans across various term lengths.
-4. **Employee Length Analysis (Bar Chart):** Assess how lending metrics are distributed among borrowers with different employment lengths.
-5. **Loan Purpose Breakdown (Bar Chart):** Provide a visual breakdown of loan metrics based on stated purposes of loans.
-6. **Home Ownership Analysis (Tree Map):** View how home ownership impacts loan applications and disbursements hierarchically.
+## 🎯 Problem Statement
 
-### Dashboard 3: Data
+Financial institutions generate large volumes of loan data daily, but deriving actionable insights from this data can be challenging.  
+This project aims to analyze and visualize loan-related metrics to answer key business questions such as:
 
-#### Objective:
+- How many loan applications were received, approved, or charged off?  
+- What is the total amount funded and received?  
+- Which regions or borrower types contribute most to defaults or repayments?  
+- How do factors like **loan purpose**, **home ownership**, and **income** affect loan approval and repayment?
 
-The Details Dashboard provides a comprehensive view of key loan-related metrics and data points, facilitating efficient access to critical information about loan portfolios, borrower profiles, and loan performance.
+The goal is to provide a **comprehensive Bank Loan Analysis Report** that helps stakeholders **evaluate performance, manage risks, and optimize lending strategies**.
 
+---
+
+## 📊 Dashboard 1: Summary
+
+### **Key Performance Indicators (KPIs)**
+
+1. **Total Loan Applications:**  
+   Total number of loan applications received during a specific period, including **Month-to-Date (MTD)** and **Month-over-Month (MoM)** changes.
+2. **Total Funded Amount:**  
+   Total funds disbursed as loans, including **MTD Funded Amount** and **MoM** analysis.
+3. **Total Amount Received:**  
+   Total payments received from borrowers, including **MTD Amount Received** and **MoM** comparisons.
+4. **Average Interest Rate:**  
+   Average interest rate across all loans with **MTD** and **MoM** variation tracking.
+5. **Average Debt-to-Income Ratio (DTI):**  
+   Average borrower DTI to assess financial stability and risk levels.
+
+### **Summary Visualization**
+
+**Loan Status Grid View:**  
+Provides an overview of lending operations categorized by **Loan Status**, displaying key metrics such as:
+
+- Total Loan Applications  
+- Total Funded Amount  
+- Total Amount Received  
+- MTD & MoM KPIs  
+- Average Interest Rate  
+- Average DTI
+
+---
+
+## 📈 Dashboard 2: Overview
+
+1. **Monthly Trends by Issue Date (Line Chart):**  
+   Identify seasonality and long-term lending activity trends.
+2. **Regional Analysis by State (Filled Map):**  
+   Analyze regions with the highest or lowest lending performance.
+3. **Loan Term Analysis (Donut Chart):**  
+   Visualize loan distributions across different term lengths (e.g., 36 or 60 months).
+4. **Employee Length Analysis (Bar Chart):**  
+   Observe how borrower employment stability impacts lending metrics.
+5. **Loan Purpose Breakdown (Bar Chart):**  
+   Display the distribution of loans based on their stated purpose (education, small business, etc.).
+6. **Home Ownership Analysis (Tree Map):**  
+   Analyze loan distribution based on home ownership status.
+
+---
+
+## ⚙️ SQL Query Document
+
+The `Query_Document.sql` file contains SQL queries that perform:
+
+- Data extraction and cleaning from the **Financial_Loan Dataset**
+- Calculation of **key metrics (KPIs)** such as total loans, average interest rates, and DTI
+- Grouping and aggregation by **Loan Status, Purpose, and Region**
+- Generating **monthly trend data** for Power BI visuals
+
+### Example SQL Query
+
+```sql
+SELECT 
+    loan_status,
+    COUNT(loan_id) AS Total_Loans,
+    SUM(loan_amount) AS Total_Funded_Amount,
+    AVG(int_rate) AS Average_Interest_Rate
+FROM financial_loan
+GROUP BY loan_status;
+```
 #### Dataset Used:
 
 The bank loan analysis dataset comprises essential fields such as Loan ID, Address State, Purpose, Grade, Sub Grade, Annual Income, Loan Status, Last Payment Date, Verification Status, Debt-to-Income Ratio, and Interest Rates. These fields provide insights into borrower demographics, employment stability, loan characteristics, risk assessment, and payment behavior.
